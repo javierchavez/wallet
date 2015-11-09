@@ -1,0 +1,162 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+#spend-form {
+    display:none;
+}
+
+#add-form {
+    display:none;
+}
+
+html,
+body{
+    overflow-x: hidden; /* Prevent scroll on narrow devices */
+    background: #eceff1;
+}
+
+body {
+    padding-top: 120px;
+}
+
+footer {
+    padding: 30px 0;
+}
+
+.navbar-brand {
+    font-size: 40px;
+    padding-left: 10%;
+
+}
+
+.navbar-container {
+    padding: 20px 0 20px 0;
+}
+
+.navbar.navbar-fixed-top.fixed-theme {
+    background-color: #2196f3;
+    border-color: #64b5f6;
+    box-shadow: 0 0 5px rgba(0,0,0,.8);
+}
+
+/* This may need some tweaking */
+.navbar-brand.fixed-theme {
+    font-size: 40px;
+    padding-left: 10%;
+}
+
+.navbar-container.fixed-theme {
+    padding: 0;
+}
+
+.navbar-brand.fixed-theme,
+.navbar-container.fixed-theme,
+.navbar.navbar-fixed-top.fixed-theme,
+.navbar-brand,
+.navbar-container{
+    transition: 0.8s;
+    -webkit-transition:  0.8s;
+}
+
+.navbar{
+    min-height:60px;
+    
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: inherit !important;
+}
+
+.navbar-nav > li > a {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    line-height: 20px;
+    color: #bdbdbd;
+    font-weight: 100;
+    font-size: 20px;
+}
+
+.navbar-toggle {
+    margin-bottom: -3px;
+}
+
+@media (min-width:992px) {
+    .desktop-only {
+        display:block !important;
+    }
+}
+
+
+@media (max-width: 991px) {
+    .mobile-only {
+        display:block !important;
+    }
+    
+    .desktop-only {
+        display:none !important;
+    }
+}
+
+#card{
+    font-family: 'Roboto', sans-serif; 
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    -webkit-box-shadow: 4px 6px 5px 0px rgba(66,66,66,0.58);
+    -moz-box-shadow: 4px 6px 5px 0px rgba(66,66,66,0.58);
+    box-shadow: 4px 6px 5px 0px rgba(66,66,66,0.58);
+    background-color: #ffffff;
+}
+
+#card .page-header {
+
+}
+.bg {
+    background: url('wallet.png') no-repeat center center;
+    position: fixed;
+    width: 100%;
+    height: 90px;
+    top: 40px;
+    left: 0px;
+    /* z-index: -1; */
+    /* -ms-transform: rotate(7deg); */
+    /* -webkit-transform: rotate(7deg); */
+    /* transform: rotate(-45deg); */
+}
+
+#spent-header{
+    margin-right: 16px;
+}
+
+
+#transactions-all{
+    display:none;
+    margin-top: 10px;
+}
+
+#hero.jumbotron {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.8)), url('background.jpg');
+    background-repeat: repeat;
+}
+
+#hero{
+    padding: 80px 0 70px;
+    margin-top: -120px;
+    color: #cccccc;
+}
+

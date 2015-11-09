@@ -1,0 +1,28 @@
+
+
+
+
+
+
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <caption>All sources of funds for budget category</caption>
+    <thead>
+    </thead>
+    <tbody>
+      <% @incomes.each do |income| %>
+        <tr>
+          <td><%= link_to income.name, edit_income_path(income) %></td>
+          <td><%= number_to_currency(income.amount, :precision => 2)  %></td>
+          <td><em><%= income.category.name %></em></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>  
+<%= link_to 'New Income', new_income_path, :class => "btn btn-default" %>
+
+
+
+

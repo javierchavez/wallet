@@ -1,0 +1,6 @@
+
+<%= render 'form_all' %>
+<div class="row">
+  <%= link_to "Delete", transactions_path(@transaction), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" %>
+</div>
+

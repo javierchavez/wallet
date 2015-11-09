@@ -1,0 +1,91 @@
+
+
+<div class="row">
+
+  <div class="row ">
+    <h1 id="spent-header" class="text-right">Spent: <%= number_to_currency(Transaction.sum(:amount), :precision => 2) %></br>
+      <small>Total buget: <%= number_to_currency(Income.sum(:amount), :precision => 2)  %></small></h1>
+  </div>
+  <%= pie_chart Category.includes(:transactions).group('categories.name').sum(:amount) %>
+
+</div>
+
+
+<div class="row">
+  <div class="col-xs-6"><%= collection_select nil, :category_id, @categories, :id, :name, {}, {:class => "form-control col-sm-4"} %></div>
+  <div class="col-xs-6"><%= link_to 'New Category', new_category_path, :class => "btn btn-default pull-right" %></div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <caption>Transactions</caption>
+    <thead>
+    </thead>
+    <tbody id="trans">
+      <% @transactions.each do |trans| %>
+        <tr>
+          <td><%= link_to trans.name, category_transactions_path(trans.category) %></td>
+          <td><em><small><%= number_to_currency(trans.amount, :precision => 2)  %></small></em></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>  
+
+
+
+<script type="text/javascript">
+ /*  google.load("visualization", "1", {packages:["corechart"]}); */
+ $(function() {
+     $("#_category_id").on('change', function () {
+         var url = $(this).val();
+         var $tbody = $("#trans");
+         /* call the url to get all the transactions for selected category */
+         $.ajax({
+             url: 'categories/' + url + '/transactions.json',
+             data: {
+                 format: 'json'
+             },
+             dataType:'json',
+             success: function(data) {
+                 $tbody.html("");
+                 $.each(data, function(i, item) {
+                     var $tr = $('<tr>').append(
+                         $('<td>').html("<a href=" + item.url.replace(".json", "") + ">" + item.name + "</a>"),
+                         $('<td>').html("<em><small>" + item.amount + "</em></small>")
+                     ).appendTo($tbody);
+                     
+                 });
+             },
+             error: function(){
+                 $tbody.html("");
+                 $("<tr>").append($("<td>").text("Error loading")).appendTo($tbody);
+                 
+             }
+         });
+     });
+     
+     
+     /* google.setOnLoadCallback(drawChart); */
+     /* function drawChart() {
+        var data = google.visualization.arrayToDataTable(
+        <%# raw Category.as_array_table %>
+        );
+        
+        var options = {
+        height: 350,
+        width: 320,
+        title: 'Spending by Category',
+        pieHole: 0.4,
+        legend: 'none', 
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+        }
+      */
+ });
+
+ 
+
+</script>
